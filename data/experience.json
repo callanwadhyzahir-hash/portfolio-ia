@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "company": "Laboratorio de Software e Inteligencia Artificial",
+    "position": "Fundador",
+    "current": true,
+    "description": "Diseño y desarrollo aplicaciones web modernas utilizando Next.js, React, TypeScript y Tailwind CSS. Investigo arquitecturas basadas en agentes inteligentes, automatización empresarial e integración de modelos de IA. Construyo proyectos orientados a resolver problemas reales mediante software escalable, APIs e integraciones con servicios externos. Actualmente trabajo en distintos prototipos relacionados con automatización documental, asistentes inteligentes y plataformas SaaS."
+  },
+  {
+    "id": 2,
+    "company": "Influencers del Conocimiento",
+    "position": "Desarrollador Web y Consultor de IA",
+    "current": false,
+    "description": "Plataforma web desarrollada para conectar expertos y creadores de contenido con personas interesadas en aprender habilidades de alto valor. Incluye perfiles, publicaciones y una experiencia moderna enfocada en comunidad."
+  },
+  {
+    "id": 3,
+    "company": "Sistema Inteligente de Tickets",
+    "position": "Cofundador y desarrollador",
+    "current": false,
+    "description": "Sistema empresarial desarrollado con PHP y MySQL para centralizar solicitudes internas, automatizar asignaciones y mejorar el seguimiento de incidencias. Diseñado pensando en pequeñas y medianas organizaciones."
+  }
+]
