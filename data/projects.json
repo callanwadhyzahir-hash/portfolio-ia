@@ -3,7 +3,7 @@
     "id": 1,
     "name": "ATLAS",
     "description": "Atlas es una visión de un asistente inteligente diseñado para potenciar las capacidades humanas.\n\nA diferencia de los asistentes tradicionales, Atlas busca convertirse en un compañero cognitivo capaz de colaborar en tareas técnicas, empresariales y estratégicas mediante IA avanzada.\n\nEstado: Concepto y arquitectura.",
-    "image": "/projects/project1.jpg",
+    "image": "/ATLAS.svg",
     "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
     "links": {
       "preview": "https://ejemplo.com",
@@ -13,7 +13,7 @@
   {
     "id": 2,
     "name": "SPOM Bridge",
-    "description": "La empresa desarrolla soluciones de automatización, integración de sistemas, IA, pipelines de datos y software empresarial",
+    "description": "Automatizá tus facturas, sincronizá MercadoLibre y TiendaNube y llevá tu contabilidad al día — todo en un solo lugar, potenciado con IA.",
     "image": "/spombridge.jpg",
     "technologies": ["React", "Node.js", "MongoDB"],
     "links": {

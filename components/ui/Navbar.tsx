@@ -6,6 +6,7 @@ import Link from 'next/link';
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('inicio');
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const brandName = "Wadhy";
 
@@ -42,6 +43,11 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavClick = (id: string) => {
+    setActiveSection(id);
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header 
       style={{
@@ -61,8 +67,8 @@ export default function Navbar() {
           margin: "0 auto",
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
-          padding: scrolled ? "0.75rem 2rem" : "1.25rem 2rem",
+          justifyContent: "space-between",
+          padding: scrolled ? "0.75rem 1.5rem" : "1.25rem 1.5rem",
           transition: "padding 0.3s",
           position: "relative",
         }}
@@ -72,8 +78,6 @@ export default function Navbar() {
         <a 
           href="#inicio"
           style={{
-            position: "absolute",
-            left: "2rem",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -86,6 +90,7 @@ export default function Navbar() {
             transition: "all 0.3s",
             cursor: "pointer",
             textDecoration: "none",
+            flexShrink: 0,
           }}
           onMouseEnter={(e) => {
             (e.target as HTMLAnchorElement).style.boxShadow = "0 0 20px rgba(251, 191, 36, 0.4)";
@@ -95,6 +100,7 @@ export default function Navbar() {
             (e.target as HTMLAnchorElement).style.boxShadow = "none";
             (e.target as HTMLAnchorElement).style.transform = "scale(1)";
           }}
+          onClick={() => handleNavClick('inicio')}
         >
           <img 
             src="/LAB.png " 
@@ -108,13 +114,14 @@ export default function Navbar() {
           />
         </a>
         
-        {/* NAVIGATION LINKS - CENTRADO */}
+        {/* NAVIGATION LINKS - CENTRADO (SOLO DESKTOP) */}
         <nav 
           style={{
-            display: "flex",
+            display: "none",
             alignItems: "center",
             gap: "2.5rem",
           }}
+          className="hidden md:flex"
         >
           {navItems.map((item) => (
             <a
@@ -140,24 +147,91 @@ export default function Navbar() {
                   (e.target as HTMLAnchorElement).style.color = "#999";
                 }
               }}
+              onClick={() => handleNavClick(item.id)}
             >
               {item.name}
             </a>
           ))}
         </nav>
 
-        {/* THEME TOGGLE & ACTIONS */}
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "0.5rem",
-          position: "absolute",
-          right: "2rem",
-        }}>
-     
-
-        </div>
+        {/* HAMBURGER MENU BUTTON - SOLO MOBILE */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "transparent",
+            border: "none",
+            color: "#fbbf24",
+            cursor: "pointer",
+            padding: "0.5rem",
+            fontSize: "1.5rem",
+          }}
+          className="md:hidden"
+        >
+          {mobileMenuOpen ? "✕" : "☰"}
+        </button>
       </div>
+
+      {/* MOBILE MENU - DROPDOWN */}
+      {mobileMenuOpen && (
+        <nav 
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0",
+            backgroundColor: "rgba(15, 15, 15, 0.98)",
+            borderTop: "1px solid #222",
+            padding: "1rem 1.5rem",
+            animation: "slideDown 0.3s ease-in-out",
+          }}
+          className="md:hidden"
+        >
+          <style>{`
+            @keyframes slideDown {
+              from {
+                opacity: 0;
+                transform: translateY(-10px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+          `}</style>
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              style={{
+                fontSize: "1rem",
+                fontWeight: activeSection === item.id ? "600" : "400",
+                color: activeSection === item.id ? "#fbbf24" : "#999",
+                textDecoration: "none",
+                transition: "all 0.3s",
+                padding: "0.75rem 0",
+                borderLeft: activeSection === item.id ? "3px solid #fbbf24" : "3px solid transparent",
+                paddingLeft: "0.75rem",
+                display: "block",
+              }}
+              onMouseEnter={(e) => {
+                if (activeSection !== item.id) {
+                  (e.target as HTMLAnchorElement).style.color = "#fff";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (activeSection !== item.id) {
+                  (e.target as HTMLAnchorElement).style.color = "#999";
+                }
+              }}
+              onClick={() => handleNavClick(item.id)}
+            >
+              {item.name}
+            </a>
+          ))}
+        </nav>
+      )}
     </header>
   );
 }

@@ -148,10 +148,43 @@ body::before {
   .anim-ping {
     animation: none;
   }
-  
-  .section {
-    animation: none;
+}
+
+/* BOTPRESS WEBCHAT STYLES */
+#bp-embedded-webchat {
+  display: flex !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+}
+
+#bp-embedded-webchat iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+}
+
+/* BOTPRESS CONTAINER RESPONSIVE */
+@media (max-width: 768px) {
+  #bp-embedded-webchat {
+    min-height: 400px !important;
+    max-height: 450px !important;
   }
+}
+
+@media (min-width: 1024px) {
+  #bp-embedded-webchat {
+    min-height: 420px !important;
+    max-height: 520px !important;
+  }
+}
+
+.section {
+  padding: 80px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeInUp;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
 }
 
 a {
@@ -163,6 +196,7 @@ a {
 a:hover {
   color: #f59e0b;
 }
+
 /* Ocultar el announcer de Next.js */
 next-route-announcer {
   display: none !important;

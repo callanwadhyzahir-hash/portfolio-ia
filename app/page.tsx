@@ -412,14 +412,30 @@ Actualmente me especializo en desarrollo Full Stack, agentes de IA y automatizac
       <section 
         id="proyectos" 
         style={{ 
-          padding: "120px 40px", 
+          padding: "80px 20px md:120px md:40px", 
           maxWidth: "1200px", 
           margin: "0 auto", 
           borderTop: "1px solid #222",
           position: "relative",
           zIndex: 2
         }}
+        className="px-5 md:px-10 py-20 md:py-32"
       >
+        <style>{`
+          @media (max-width: 640px) {
+            #proyectos {
+              padding: 60px 16px !important;
+            }
+            #proyectos h2 {
+              font-size: 1.75rem !important;
+              margin-bottom: 40px !important;
+            }
+            #proyectos > div {
+              gap: 20px !important;
+            }
+          }
+        `}</style>
+
         <h2 style={{ 
           fontSize: "3rem", 
           fontWeight: "700", 
@@ -438,16 +454,18 @@ Actualmente me especializo en desarrollo Full Stack, agentes de IA y automatizac
           💻 Proyectos
         </h2>
 
-        {/* GRID DE PROYECTOS */}
+        {/* GRID DE PROYECTOS - RESPONSIVO */}
         <div style={{ 
           display: "grid", 
-          gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", 
-          gap: "30px" 
-        }}>
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", 
+          gap: "30px",
+        }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8"
+        >
           {mounted && projectsData.map((project, index) => (
             <div 
               key={project.id}
-              className="anim-fade-in"
+              className="anim-fade-in flex flex-col"
               style={{
                 animationDelay: `${150 * index}ms`,
                 position: "relative",
@@ -456,7 +474,9 @@ Actualmente me especializo en desarrollo Full Stack, agentes de IA y automatizac
                 overflow: "hidden", 
                 border: "1px solid #222", 
                 transition: "all 0.3s",
-                cursor: "pointer"
+                cursor: "pointer",
+                display: "flex",
+                flexDirection: "column"
               }}
               onMouseEnter={(e) => {
                 const card = e.currentTarget as HTMLDivElement;
@@ -471,30 +491,35 @@ Actualmente me especializo en desarrollo Full Stack, agentes de IA y automatizac
                 card.style.transform = "translateY(0)";
               }}
             >
-              {/* IMAGEN CONTAINER */}
+              {/* IMAGEN CONTAINER - RESPONSIVA */}
               <div style={{ 
-                height: "200px", 
-                backgroundColor: "#2a2a2a", 
+                minHeight: "180px",
+                height: "auto",
+                backgroundColor: "#1a1a1a", 
                 display: "flex", 
                 alignItems: "center", 
                 justifyContent: "center",
                 position: "relative",
-                overflow: "hidden"
+                overflow: "hidden",
+                aspectRatio: "16/10",
+                background: "linear-gradient(135deg, rgba(15,15,15,0.8) 0%, rgba(26,26,26,0.8) 100%)"
               }}>
                 {project.image ? (
                   <img 
                     src={project.image} 
                     alt={project.name}
                     style={{
-                      width: "100%",
-                      height: "100%",
+                      width: "90%",
+                      height: "90%",
+                      maxWidth: "280px",
+                      maxHeight: "160px",
                       objectFit: "contain",
                       objectPosition: "center",
-                      padding: "20px",
-                      transition: "transform 0.3s"
+                      transition: "transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                      filter: "drop-shadow(0 10px 30px rgba(251, 191, 36, 0.1))"
                     }}
                     onMouseEnter={(e) => {
-                      (e.target as HTMLImageElement).style.transform = "scale(1.05)";
+                      (e.target as HTMLImageElement).style.transform = "scale(1.1)";
                     }}
                     onMouseLeave={(e) => {
                       (e.target as HTMLImageElement).style.transform = "scale(1)";
@@ -503,20 +528,25 @@ Actualmente me especializo en desarrollo Full Stack, agentes de IA y automatizac
                 ) : (
                   <span style={{ color: "#666" }}>Imagen del proyecto</span>
                 )}
-                {/* OVERLAY GRADIENT */}
+                {/* OVERLAY GRADIENT MEJORADO */}
                 <div style={{
                   position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  height: "100px",
-                  background: "linear-gradient(to top, rgba(0,0,0,0.8), transparent)",
+                  inset: 0,
+                  background: "radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%)",
+                  pointerEvents: "none"
+                }} />
+                {/* BORDE DECORATIVO */}
+                <div style={{
+                  position: "absolute",
+                  inset: "8px",
+                  border: "1px solid rgba(251, 191, 36, 0.1)",
+                  borderRadius: "8px",
                   pointerEvents: "none"
                 }} />
               </div>
 
-              {/* CONTENIDO */}
-              <div style={{ padding: "20px" }}>
+              {/* CONTENIDO - FLEX GROW PARA LLENAR ESPACIO */}
+              <div style={{ padding: "20px", flex: 1, display: "flex", flexDirection: "column" }}>
                 <h3 style={{ 
                   fontSize: "1.2rem", 
                   marginBottom: "10px",
@@ -528,7 +558,8 @@ Actualmente me especializo en desarrollo Full Stack, agentes de IA y automatizac
                   color: "#aaa", 
                   marginBottom: "15px", 
                   fontSize: "0.9rem",
-                  lineHeight: "1.6"
+                  lineHeight: "1.6",
+                  flex: 1
                 }}>
                   {project.description}
                 </p>
@@ -566,11 +597,15 @@ Actualmente me especializo en desarrollo Full Stack, agentes de IA y automatizac
                   ))}
                 </div>
 
-                {/* LINKS */}
+                {/* LINKS - RESPONSIVO */}
                 <div style={{
                   display: "flex",
-                  gap: "10px"
-                }}>
+                  gap: "10px",
+                  flexDirection: "column",
+                  marginTop: "auto"
+                }}
+                className="flex flex-col md:flex-row gap-3 md:gap-2"
+                >
                   {project.links.preview && (
                     <a 
                       href={project.links.preview}
@@ -644,14 +679,34 @@ Actualmente me especializo en desarrollo Full Stack, agentes de IA y automatizac
       <section 
         id="sobre" 
         style={{ 
-          padding: "120px 40px", 
+          padding: "120px 40px md:120px md:40px",
           maxWidth: "1200px", 
           margin: "0 auto", 
           borderTop: "1px solid #222",
           position: "relative",
           zIndex: 2
         }}
+        className="px-5 md:px-10 py-20 md:py-32"
       >
+        <style>{`
+          @media (max-width: 640px) {
+            #sobre {
+              padding: 60px 16px !important;
+            }
+            #sobre h2 {
+              font-size: 1.75rem !important;
+              margin-bottom: 40px !important;
+            }
+            #sobre > div {
+              grid-template-columns: 1fr !important;
+              gap: 30px !important;
+            }
+            #sobre img {
+              max-height: 350px !important;
+            }
+          }
+        `}</style>
+
         <h2 style={{ 
           fontSize: "3rem", 
           fontWeight: "700", 
@@ -674,45 +729,86 @@ Actualmente me especializo en desarrollo Full Stack, agentes de IA y automatizac
           display: "grid", 
           gridTemplateColumns: "1fr 1fr", 
           gap: "60px", 
-          alignItems: "center" 
-        }}>
-          <div>
-            {/* TODO: Actualiza con tu biografía */}
-            <p style={{ color: "#aaa", lineHeight: "1.8", marginBottom: "20px" }}>
-             Desde que descubrí el desarrollo de software entendí que programar no consiste únicamente en escribir código, sino en diseñar sistemas capaces de resolver problemas reales.
-
-Mi mayor interés está en la Inteligencia Artificial aplicada a negocios, la automatización de procesos y la creación de plataformas digitales escalables.
-
-Actualmente estoy desarrollando proyectos propios orientados a IA, software empresarial y automatización, mientras continúo ampliando mis conocimientos en arquitectura de software, ingeniería de sistemas y desarrollo Full Stack.
-
-Disfruto aprender tecnologías nuevas, experimentar con herramientas modernas y construir productos que generen impacto real en las personas y organizaciones.
+          alignItems: "center"
+        }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center"
+        >
+          {/* TEXTO */}
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "16px"
+          }}>
+            <p style={{ color: "#aaa", lineHeight: "1.8", marginBottom: "0", fontSize: "0.95rem" }}>
+              Desde que descubrí el desarrollo de software entendí que programar no consiste únicamente en escribir código, sino en diseñar sistemas capaces de resolver problemas reales.
             </p>
-            <p style={{ color: "#aaa", lineHeight: "1.8" }}>
+            <p style={{ color: "#aaa", lineHeight: "1.8", marginBottom: "0", fontSize: "0.95rem" }}>
+              Mi mayor interés está en la Inteligencia Artificial aplicada a negocios, la automatización de procesos y la creación de plataformas digitales escalables.
+            </p>
+            <p style={{ color: "#aaa", lineHeight: "1.8", marginBottom: "0", fontSize: "0.95rem" }}>
+              Actualmente estoy desarrollando proyectos propios orientados a IA, software empresarial y automatización, mientras continúo ampliando mis conocimientos en arquitectura de software, ingeniería de sistemas y desarrollo Full Stack.
+            </p>
+            <p style={{ color: "#aaa", lineHeight: "1.8", marginBottom: "0", fontSize: "0.95rem" }}>
               Cuando no estoy codificando, me puedes encontrar explorando nuevas tecnologías, contribuyendo a proyectos open source, o compartiendo lo que he aprendido con la comunidad.
             </p>
           </div>
           
+          {/* IMAGEN ENCUADRADA */}
           <div style={{
             width: "100%",
-            height: "400px",
+            height: "450px",
             backgroundColor: "#1a1a1a",
             borderRadius: "12px",
-            border: "1px solid #222",
+            border: "2px solid #fbbf24",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            overflow: "hidden"
-          }}>
+            overflow: "hidden",
+            boxShadow: "0 10px 40px rgba(251, 191, 36, 0.1), inset 0 0 20px rgba(251, 191, 36, 0.05)",
+            transition: "all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
+            cursor: "pointer",
+            position: "relative"
+          }}
+          onMouseEnter={(e) => {
+            const div = e.currentTarget as HTMLDivElement;
+            div.style.borderColor = "#fbbf24";
+            div.style.boxShadow = "0 20px 50px rgba(251, 191, 36, 0.25), inset 0 0 30px rgba(251, 191, 36, 0.1)";
+            div.style.transform = "translateY(-4px)";
+          }}
+          onMouseLeave={(e) => {
+            const div = e.currentTarget as HTMLDivElement;
+            div.style.borderColor = "#fbbf24";
+            div.style.boxShadow = "0 10px 40px rgba(251, 191, 36, 0.1), inset 0 0 20px rgba(251, 191, 36, 0.05)";
+            div.style.transform = "translateY(0)";
+          }}
+          className="md:h-96 h-80"
+          >
             <img 
               src="/foto de peerfil 2.png" 
-              alt="Foto de perfil" 
+              alt="Foto de perfil Wadhy" 
               style={{ 
                 width: "100%", 
                 height: "100%", 
                 objectFit: "cover",
-                objectPosition: "center"
-              }} 
+                objectPosition: "center",
+                transition: "transform 0.3s ease",
+                display: "block"
+              }}
+              onMouseEnter={(e) => {
+                (e.target as HTMLImageElement).style.transform = "scale(1.08)";
+              }}
+              onMouseLeave={(e) => {
+                (e.target as HTMLImageElement).style.transform = "scale(1)";
+              }}
             />
+            {/* OVERLAY GRADIENT SUTIL */}
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(135deg, rgba(251, 191, 36, 0) 0%, rgba(251, 191, 36, 0.05) 100%)",
+              pointerEvents: "none",
+              borderRadius: "10px"
+            }} />
           </div>
         </div>
       </section>
@@ -721,7 +817,7 @@ Disfruto aprender tecnologías nuevas, experimentar con herramientas modernas y 
       <section 
         id="contacto" 
         style={{ 
-          padding: "120px 40px", 
+          padding: "120px 40px md:120px md:40px",
           maxWidth: "1200px", 
           margin: "0 auto", 
           borderTop: "1px solid #222",
@@ -729,114 +825,307 @@ Disfruto aprender tecnologías nuevas, experimentar con herramientas modernas y 
           zIndex: 2,
           color: "#fff"
         }}
+        className="px-5 md:px-10 py-20 md:py-32"
       >
+        <style>{`
+          @keyframes slideInUp {
+            from {
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+
+          @keyframes glow {
+            0%, 100% {
+              box-shadow: 0 30px 90px rgba(251, 191, 36, 0.08);
+            }
+            50% {
+              box-shadow: 0 30px 90px rgba(251, 191, 36, 0.15);
+            }
+          }
+
+          .contact-section-left {
+            animation: slideInUp 0.8s ease-out;
+          }
+
+          .contact-section-right {
+            animation: slideInUp 0.8s ease-out 0.2s both;
+          }
+
+          #contacto > div {
+            animation: fadeIn 0.6s ease-out;
+          }
+
+          @media (max-width: 640px) {
+            #contacto {
+              padding: 60px 16px !important;
+            }
+            #contacto h2 {
+              font-size: 2rem !important;
+              margin-bottom: 24px !important;
+            }
+            #contacto > div {
+              grid-template-columns: 1fr !important;
+              gap: 40px !important;
+            }
+            #bp-embedded-webchat {
+              min-height: 400px !important;
+              max-height: 450px !important;
+            }
+          }
+        `}</style>
+
         <div style={{
           display: "grid",
           gridTemplateColumns: "1fr 1.2fr",
-          gap: "40px",
-          alignItems: "start",
-        }}>
+          gap: "60px",
+          alignItems: "stretch",
+        }}
+        className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 items-stretch lg:items-start"
+        >
+          {/* SECCIÓN IZQUIERDA - INFORMACIÓN */}
           <div style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
             textAlign: "left",
-            gap: "24px"
-          }}>
-            <div>
+            gap: "32px",
+            justifyContent: "flex-start"
+          }}
+          className="contact-section-left lg:col-span-2"
+          >
+            {/* HEADER CON TÍTULO */}
+            <div style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "12px"
+            }}>
               <p style={{
                 margin: 0,
                 color: "#fbbf24",
                 fontWeight: "700",
                 letterSpacing: "0.16em",
                 textTransform: "uppercase",
-                fontSize: "0.82rem"
+                fontSize: "0.75rem",
               }}>
-                Chat en vivo
+                💬 Chat en vivo
               </p>
               <h2 style={{ 
                 fontSize: "3rem", 
-                fontWeight: "700", 
-                margin: "18px 0 0 0",
-                lineHeight: 1.05
+                fontWeight: "800", 
+                margin: "0",
+                lineHeight: 1.1,
+                background: "linear-gradient(135deg, #fff 0%, #d1d5db 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent"
               }}>
                 ¿Hablamos?
               </h2>
             </div>
 
+            {/* DESCRIPCIÓN PRINCIPAL */}
             <p style={{ 
               fontSize: "1.05rem", 
-              color: "#d1d5db", 
+              color: "#ccc", 
               lineHeight: 1.8,
-              maxWidth: "540px"
+              margin: 0,
+              fontWeight: "400"
             }}>
               ¿Tenés una idea, un desafío técnico o simplemente querés conversar con el bot antes de iniciar un proyecto?
-              Aquí podés probar el asistente de Botpress directamente en la página y obtener respuestas al instante.
             </p>
 
+            {/* CAJA DESTACADA */}
             <div style={{
-              backgroundColor: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              borderRadius: "24px",
+              backgroundColor: "rgba(251, 191, 36, 0.05)",
+              border: "1px solid rgba(251, 191, 36, 0.2)",
+              borderRadius: "16px",
               padding: "24px",
               color: "#ddd",
-              boxShadow: "0 24px 70px rgba(0,0,0,0.22)",
-              maxWidth: "540px"
-            }}>
-              <p style={{ margin: 0, fontSize: "1rem", lineHeight: 1.7 }}>
-                Ingresá tu consulta, pedí una propuesta o probá el bot para conocer cómo puedo ayudarte en software, IA y automatización.
+              transition: "all 0.3s ease",
+              cursor: "pointer"
+            }}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget as HTMLDivElement;
+              el.style.backgroundColor = "rgba(251, 191, 36, 0.08)";
+              el.style.borderColor = "rgba(251, 191, 36, 0.4)";
+              el.style.transform = "translateY(-2px)";
+              el.style.boxShadow = "0 10px 30px rgba(251, 191, 36, 0.1)";
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget as HTMLDivElement;
+              el.style.backgroundColor = "rgba(251, 191, 36, 0.05)";
+              el.style.borderColor = "rgba(251, 191, 36, 0.2)";
+              el.style.transform = "translateY(0)";
+              el.style.boxShadow = "none";
+            }}
+            >
+              <p style={{ margin: 0, fontSize: "0.95rem", lineHeight: 1.7, fontWeight: "500" }}>
+                Ingresá tu consulta, pedí una propuesta o probá el bot para conocer cómo puedo ayudarte en <span style={{ color: "#fbbf24", fontWeight: "700" }}>software, IA y automatización</span>.
               </p>
+            </div>
+
+            {/* CTA SECUNDARIO */}
+            <div style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "16px",
+              marginTop: "auto"
+            }}>
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px"
+              }}>
+                <div style={{
+                  width: "8px",
+                  height: "8px",
+                  borderRadius: "50%",
+                  backgroundColor: "#10b981",
+                  animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+                }} />
+                <p style={{ margin: 0, color: "#aaa", fontSize: "0.85rem" }}>
+                  Bot disponible 24/7
+                </p>
+              </div>
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px"
+              }}>
+                <div style={{
+                  width: "8px",
+                  height: "8px",
+                  borderRadius: "50%",
+                  backgroundColor: "#fbbf24"
+                }} />
+                <p style={{ margin: 0, color: "#aaa", fontSize: "0.85rem" }}>
+                  Respuesta instantánea
+                </p>
+              </div>
             </div>
           </div>
 
+          {/* SECCIÓN DERECHA - CHAT */}
           <div style={{
             width: "100%",
-            borderRadius: "30px",
+            height: "100%",
+            borderRadius: "24px",
             overflow: "hidden",
-            background: "linear-gradient(180deg, rgba(15,15,15,0.95) 0%, rgba(17,17,17,0.95) 100%)",
-            border: "1px solid rgba(255,255,255,0.08)",
-            boxShadow: "0 30px 90px rgba(0, 0, 0, 0.28)",
-          }}>
+            background: "linear-gradient(135deg, rgba(15,15,15,0.98) 0%, rgba(20,20,20,0.98) 100%)",
+            border: "1px solid rgba(251, 191, 36, 0.15)",
+            boxShadow: "0 30px 90px rgba(251, 191, 36, 0.1), inset 0 1px 0 rgba(255,255,255,0.08)",
+            transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
+            animation: "glow 3s ease-in-out infinite",
+            display: "flex",
+            flexDirection: "column",
+            minHeight: "520px"
+          }}
+          className="contact-section-right lg:col-span-3"
+          onMouseEnter={(e) => {
+            const el = e.currentTarget as HTMLDivElement;
+            el.style.borderColor = "rgba(251, 191, 36, 0.3)";
+            el.style.transform = "translateY(-4px)";
+          }}
+          onMouseLeave={(e) => {
+            const el = e.currentTarget as HTMLDivElement;
+            el.style.borderColor = "rgba(251, 191, 36, 0.15)";
+            el.style.transform = "translateY(0)";
+          }}
+          >
+            {/* HEADER DEL CHAT */}
             <div style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              padding: "24px 28px",
-              borderBottom: "1px solid rgba(255,255,255,0.08)",
-              backgroundColor: "rgba(255,255,255,0.03)"
+              padding: "20px 28px",
+              borderBottom: "1px solid rgba(251, 191, 36, 0.1)",
+              backgroundColor: "rgba(251, 191, 36, 0.03)",
+              backgroundImage: "linear-gradient(90deg, rgba(251, 191, 36, 0.05) 0%, rgba(251, 191, 36, 0) 100%)",
+              flexShrink: 0
             }}>
-              <div>
-                <p style={{ margin: 0, fontSize: "0.9rem", color: "#fbbf24", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                  Chat con el bot
-                </p>
-                <p style={{ margin: "8px 0 0 0", color: "#aaa", fontSize: "0.9rem" }}>
-                  Respuestas rápidas desde Botpress
-                </p>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                <div style={{
+                  width: "8px",
+                  height: "8px",
+                  borderRadius: "50%",
+                  backgroundColor: "#10b981",
+                  animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+                }} />
+                <div>
+                  <p style={{ margin: 0, fontSize: "0.85rem", color: "#fbbf24", letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: "700" }}>
+                    🤖 Atlas Bot
+                  </p>
+                  <p style={{ margin: "4px 0 0 0", color: "#888", fontSize: "0.75rem" }}>
+                    En línea
+                  </p>
+                </div>
               </div>
-              <span style={{
-                width: "42px",
-                height: "42px",
+              <div style={{
+                width: "40px",
+                height: "40px",
                 borderRadius: "50%",
-                backgroundColor: "#fbbf24",
+                backgroundColor: "rgba(251, 191, 36, 0.15)",
                 display: "grid",
                 placeItems: "center",
-                color: "#111",
-                fontWeight: "700"
+                color: "#fbbf24",
+                fontWeight: "700",
+                fontSize: "1.1rem",
+                border: "1px solid rgba(251, 191, 36, 0.2)"
               }}>
-                B
-              </span>
+                🤖
+              </div>
             </div>
 
+            {/* CONTENEDOR DEL CHAT */}
             <div
               id="bp-embedded-webchat"
               style={{
                 width: "100%",
-                minHeight: "650px",
-                backgroundColor: "#0f0f0f"
+                flex: 1,
+                minHeight: "420px",
+                maxHeight: "520px",
+                backgroundColor: "#0f0f0f",
+                backgroundImage: "radial-gradient(circle at 20% 50%, rgba(251, 191, 36, 0.02) 0%, transparent 50%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                overflow: "hidden"
               }}
             />
           </div>
         </div>
+
+        {/* ESTILOS ADICIONALES */}
+        <style>{`
+          @keyframes pulse {
+            0%, 100% {
+              opacity: 1;
+            }
+            50% {
+              opacity: 0.5;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .contact-section-left, .contact-section-right {
+              animation: slideInUp 0.8s ease-out !important;
+            }
+          }
+        `}</style>
 
         <Script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js" strategy="afterInteractive" />
         <Script src="https://files.bpcontent.cloud/2026/07/19/01/20260719015847-89LDK7DQ.js" strategy="afterInteractive" />
@@ -845,16 +1134,31 @@ Disfruto aprender tecnologías nuevas, experimentar con herramientas modernas y 
       {/* ==================== FOOTER ==================== */}
       <footer 
         style={{ 
-          padding: "40px", 
+          padding: "60px 40px md:60px md:40px",
           borderTop: "1px solid #222",
           textAlign: "center",
           color: "#666",
           fontSize: "0.9rem",
           position: "relative",
-          zIndex: 2
+          zIndex: 2,
+          background: "linear-gradient(180deg, rgba(15,15,15,0) 0%, rgba(15,15,15,0.4) 100%)"
         }}
+        className="px-5 md:px-10"
       >
-        <p>© Mi portafolio 2026. All rights reserved</p>
+        <style>{`
+          @media (max-width: 640px) {
+            footer {
+              padding: 40px 16px !important;
+              font-size: 0.8rem;
+            }
+          }
+        `}</style>
+        <p style={{ margin: 0, fontWeight: "500" }}>
+          © 2026 Wadhy Zahir. Built with <span style={{ color: "#fbbf24" }}>Next.js</span> • Designed for AI & Innovation
+        </p>
+        <p style={{ margin: "12px 0 0 0", color: "#555", fontSize: "0.8rem" }}>
+          Portfolio v1.0 • Passion for Code & Artificial Intelligence
+        </p>
       </footer>
     </div>
   );
