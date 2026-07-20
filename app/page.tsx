@@ -865,25 +865,25 @@ Actualmente me especializo en desarrollo Full Stack, agentes de IA y automatizac
             animation: slideInUp 0.8s ease-out 0.2s both;
           }
 
-          #contacto > div {
+          #hablamos > div {
             animation: fadeIn 0.6s ease-out;
           }
 
           @media (max-width: 640px) {
-            #contacto {
+            #hablamos {
               padding: 60px 16px !important;
             }
-            #contacto h2 {
+            #hablamos h2 {
               font-size: 2rem !important;
               margin-bottom: 24px !important;
             }
-            #contacto > div {
+            #hablamos > div {
               grid-template-columns: 1fr !important;
               gap: 40px !important;
             }
             #bp-embedded-webchat {
-              min-height: 400px !important;
-              max-height: 450px !important;
+              min-height: 360px !important;
+              max-height: 480px !important;
             }
           }
         `}</style>
