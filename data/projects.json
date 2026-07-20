@@ -6,8 +6,8 @@
     "image": "/ATLAS.svg",
     "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
     "links": {
-      "preview": "https://ejemplo.com",
-      "github": "https://github.com/usuario/proyecto"
+      "preview": "https://atlas-rose-two.vercel.app/",
+      "github": "https://github.com/callanwadhyzahir-hash/atlas.git"
     }
   },
   {
@@ -18,7 +18,7 @@
     "technologies": ["React", "Node.js", "MongoDB"],
     "links": {
       "preview": "https://app.spomsolutions.com/",
-      "github": "https://github.com/usuario/proyecto"
+      "github": "https://github.com/callanwadhyzahir-hash/spom-bridge.git"
     }
   }
 ]

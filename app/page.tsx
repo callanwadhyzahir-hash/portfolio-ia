@@ -813,9 +813,9 @@ Actualmente me especializo en desarrollo Full Stack, agentes de IA y automatizac
         </div>
       </section>
 
-      {/* ==================== CONTACTO SECTION ==================== */}
+      {/* ==================== hablamos SECTION ==================== */}
       <section 
-        id="contacto" 
+        id="hablamos" 
         style={{ 
           padding: "120px 40px md:120px md:40px",
           maxWidth: "1200px", 
