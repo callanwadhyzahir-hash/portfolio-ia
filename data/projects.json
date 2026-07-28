@@ -12,13 +12,13 @@
   },
   {
     "id": 2,
-    "name": "SPOM Bridge",
-    "description": "Automatizá tus facturas, sincronizá MercadoLibre y TiendaNube y llevá tu contabilidad al día — todo en un solo lugar, potenciado con IA.",
-    "image": "/spombridge.jpg",
-    "technologies": ["React", "Node.js", "MongoDB"],
+    "name": "PAMPA",
+    "description": "ERP inteligente en desarrollo para PyMEs argentinas. Centraliza empresas, sucursales, clientes, productos, stock y ventas en una experiencia clara, con automatización e inteligencia artificial integradas progresivamente.",
+    "image": "/PAMPA.svg",
+    "technologies": ["Next.js", "TypeScript", "NestJS", "Prisma"],
     "links": {
-      "preview": "https://app.spomsolutions.com/",
-      "github": "https://github.com/callanwadhyzahir-hash/spom-bridge.git"
+      "preview": "https://pampa-fg5snutlx-wadhy.vercel.app/",
+      "github": "https://github.com/callanwadhyzahir-hash/PAMPA.git"
     }
   }
 ]

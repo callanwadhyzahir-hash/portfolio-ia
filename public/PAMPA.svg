@@ -1,0 +1,98 @@
+<svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title description">
+  <title id="title">PAMPA, ERP inteligente para empresas argentinas</title>
+  <desc id="description">Vista conceptual animada del panel de gestión de PAMPA.</desc>
+  <defs>
+    <linearGradient id="pampaBackground" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11140f"/>
+      <stop offset="1" stop-color="#0b0d0a"/>
+    </linearGradient>
+    <linearGradient id="pampaArea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b8e26b" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#b8e26b" stop-opacity=".02"/>
+    </linearGradient>
+    <filter id="pampaGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <clipPath id="chartClip">
+      <rect x="252" y="151" width="286" height="97" rx="4"/>
+    </clipPath>
+    <style>
+      .pampa-pulse { animation: pampaPulse 2.8s ease-in-out infinite; }
+      .pampa-line { animation: pampaLine 3.4s ease-in-out infinite; }
+      .pampa-rise { animation: pampaRise 3.4s ease-in-out infinite; transform-origin: 395px 245px; }
+      .pampa-row { animation: pampaRow 4s ease-in-out infinite; }
+      .pampa-row-two { animation-delay: .65s; }
+      .pampa-row-three { animation-delay: 1.3s; }
+      @keyframes pampaPulse {
+        0%, 100% { opacity: .45; transform: scale(.9); transform-origin: center; }
+        50% { opacity: 1; transform: scale(1.18); transform-origin: center; }
+      }
+      @keyframes pampaLine {
+        0%, 100% { stroke-dashoffset: 0; opacity: .78; }
+        50% { stroke-dashoffset: -34; opacity: 1; }
+      }
+      @keyframes pampaRise {
+        0%, 100% { transform: scaleY(.84); opacity: .7; }
+        50% { transform: scaleY(1); opacity: 1; }
+      }
+      @keyframes pampaRow {
+        0%, 100% { opacity: .45; }
+        35%, 65% { opacity: 1; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .pampa-pulse, .pampa-line, .pampa-rise, .pampa-row { animation: none; }
+      }
+    </style>
+  </defs>
+
+  <rect x="1" y="1" width="598" height="338" rx="18" fill="url(#pampaBackground)" stroke="#ffffff" stroke-opacity=".12"/>
+  <path d="M24 68H576M210 68V316" stroke="#ffffff" stroke-opacity=".1"/>
+
+  <text x="28" y="43" fill="#f2f1e8" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="-1">PAMPA<tspan fill="#b8e26b">.</tspan></text>
+  <circle cx="536" cy="35" r="12" fill="#b8e26b" fill-opacity=".12"/>
+  <circle cx="536" cy="35" r="4" fill="#b8e26b" class="pampa-pulse"/>
+  <text x="554" y="39" fill="#a7aa9d" font-family="Arial, sans-serif" font-size="9" text-anchor="end">SISTEMA OPERATIVO</text>
+
+  <g fill="#a7aa9d" font-family="Arial, sans-serif" font-size="10">
+    <text x="29" y="99" fill="#f2f1e8">Resumen</text>
+    <text x="29" y="128">Empresas</text>
+    <text x="29" y="157">Productos</text>
+    <text x="29" y="186">Clientes</text>
+    <text x="29" y="215">Inventario</text>
+    <text x="29" y="244">Ventas</text>
+  </g>
+  <rect x="19" y="82" width="171" height="27" rx="4" fill="#b8e26b" fill-opacity=".1"/>
+  <rect x="19" y="82" width="2" height="27" fill="#b8e26b"/>
+  <text x="29" y="296" fill="#a7aa9d" font-family="Arial, sans-serif" font-size="9" letter-spacing="1.2">CONSTRUIDO PARA ARGENTINA</text>
+
+  <text x="235" y="96" fill="#f2f1e8" font-family="Arial, sans-serif" font-size="16" font-weight="600">Operación general</text>
+  <text x="235" y="115" fill="#a7aa9d" font-family="Arial, sans-serif" font-size="9">Empresa activa · Río Norte SA</text>
+
+  <g class="pampa-row">
+    <rect x="235" y="131" width="92" height="51" rx="5" fill="#ffffff" fill-opacity=".035" stroke="#ffffff" stroke-opacity=".1"/>
+    <text x="247" y="150" fill="#a7aa9d" font-family="Arial, sans-serif" font-size="8">VENTAS</text>
+    <text x="247" y="170" fill="#f2f1e8" font-family="Arial, sans-serif" font-size="15" font-weight="600">$ 8,4 M</text>
+  </g>
+  <g class="pampa-row pampa-row-two">
+    <rect x="337" y="131" width="92" height="51" rx="5" fill="#ffffff" fill-opacity=".035" stroke="#ffffff" stroke-opacity=".1"/>
+    <text x="349" y="150" fill="#a7aa9d" font-family="Arial, sans-serif" font-size="8">STOCK</text>
+    <text x="349" y="170" fill="#f2f1e8" font-family="Arial, sans-serif" font-size="15" font-weight="600">1.248</text>
+  </g>
+  <g class="pampa-row pampa-row-three">
+    <rect x="439" y="131" width="116" height="51" rx="5" fill="#b8e26b" fill-opacity=".08" stroke="#b8e26b" stroke-opacity=".24"/>
+    <text x="451" y="150" fill="#a7aa9d" font-family="Arial, sans-serif" font-size="8">RESULTADO</text>
+    <text x="451" y="170" fill="#b8e26b" font-family="Arial, sans-serif" font-size="15" font-weight="600">+ 18,6%</text>
+  </g>
+
+  <rect x="235" y="197" width="320" height="99" rx="6" fill="#ffffff" fill-opacity=".025" stroke="#ffffff" stroke-opacity=".1"/>
+  <g clip-path="url(#chartClip)">
+    <path d="M252 274L252 256L283 247L315 253L347 227L379 238L411 211L443 218L475 190L507 204L538 181L538 274Z" fill="url(#pampaArea)" class="pampa-rise"/>
+    <path d="M252 256L283 247L315 253L347 227L379 238L411 211L443 218L475 190L507 204L538 181" fill="none" stroke="#b8e26b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 5" class="pampa-line"/>
+  </g>
+  <path d="M252 274H538M252 245H538M252 216H538" stroke="#ffffff" stroke-opacity=".07"/>
+  <text x="247" y="287" fill="#a7aa9d" font-family="Arial, sans-serif" font-size="8">MOVIMIENTO MENSUAL</text>
+  <text x="543" y="287" fill="#b8e26b" font-family="Arial, sans-serif" font-size="8" text-anchor="end">DATOS EN TIEMPO REAL</text>
+
+  <rect x="235" y="309" width="320" height="1" fill="#ffffff" fill-opacity=".1"/>
+  <text x="235" y="325" fill="#a7aa9d" font-family="Arial, sans-serif" font-size="8" letter-spacing=".7">MULTIEMPRESA · MULTISUCURSAL · INTELIGENCIA APLICADA</text>
+</svg>
